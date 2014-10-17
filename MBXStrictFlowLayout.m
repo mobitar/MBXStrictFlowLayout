@@ -8,6 +8,8 @@
 
 #import "MBXStrictFlowLayout.h"
 
+#define FLOAT_EPSILON 0.0001
+
 @implementation MBXStrictFlowLayout
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
