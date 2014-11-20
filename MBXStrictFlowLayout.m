@@ -15,7 +15,7 @@
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray *answer = [[super layoutAttributesForElementsInRect:rect] mutableCopy];
-    for(int i = 1; i < [answer count]; ++i) {
+    for(int i = 1; i < [answer count]; i++) {
         UICollectionViewLayoutAttributes *currentLayoutAttributes = answer[i];
         UICollectionViewLayoutAttributes *prevLayoutAttributes = answer[i - 1];
         CGFloat previousMaxX = CGRectGetMaxX(prevLayoutAttributes.frame);
