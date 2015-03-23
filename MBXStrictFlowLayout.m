@@ -22,7 +22,7 @@
         CGRect currentFrame = currentLayoutAttributes.frame;
         CGFloat expectedMaxX = previousMaxX + self.actualItemSpacing + currentLayoutAttributes.frame.size.width;
         CGFloat difference = self.collectionViewContentSize.width - expectedMaxX;
-        if(difference > 0 || fabs(difference) <= FLOAT_EPSILON) {
+        if(difference > 0 || fabs(difference) <= FLOAT_EPSILON || self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
             currentFrame.origin.x = previousMaxX + self.actualItemSpacing;
             currentFrame.origin.y = CGRectGetMinY(prevLayoutAttributes.frame);
         } else {
