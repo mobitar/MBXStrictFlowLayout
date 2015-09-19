@@ -27,7 +27,7 @@
             currentFrame.origin.x = previousMaxX + self.actualItemSpacing;
             currentFrame.origin.y = CGRectGetMinY(prevLayoutAttributes.frame);
         } else {
-            currentFrame.origin.x = 0;
+            currentFrame.origin.x = self.sectionInset.left;
             currentFrame.origin.y = CGRectGetMaxY(prevLayoutAttributes.frame) + self.minimumLineSpacing;
         }
         currentLayoutAttributes.frame = currentFrame;
