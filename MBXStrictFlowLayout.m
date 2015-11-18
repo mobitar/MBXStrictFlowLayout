@@ -15,11 +15,16 @@
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray *answer = [[super layoutAttributesForElementsInRect:rect] mutableCopy];
-    for(int i = 1; i < [answer count]; i++) {
+    for(int i = 0; i < [answer count]; i++) {
         UICollectionViewLayoutAttributes *currentLayoutAttributes = answer[i];
+        CGRect currentFrame = currentLayoutAttributes.frame;
+        if(i == 0) {
+            currentFrame.origin.x = self.sectionInset.left;
+            currentLayoutAttributes.frame = currentFrame;
+            continue;
+        }
         UICollectionViewLayoutAttributes *prevLayoutAttributes = answer[i - 1];
         CGFloat previousMaxX = CGRectGetMaxX(prevLayoutAttributes.frame);
-        CGRect currentFrame = currentLayoutAttributes.frame;
         CGFloat expectedMaxX = previousMaxX + self.actualItemSpacing + currentLayoutAttributes.frame.size.width;
         CGFloat difference = self.collectionViewContentSize.width - expectedMaxX;
         
