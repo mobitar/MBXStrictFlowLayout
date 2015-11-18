@@ -22,11 +22,12 @@
         CGRect currentFrame = currentLayoutAttributes.frame;
         CGFloat expectedMaxX = previousMaxX + self.actualItemSpacing + currentLayoutAttributes.frame.size.width;
         CGFloat difference = self.collectionViewContentSize.width - expectedMaxX;
-        if(difference > 0 || fabs(difference) <= FLOAT_EPSILON || self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        
+        if(difference > 0 || fabs(difference) <= FLOAT_EPSILON || (self.scrollDirection == UICollectionViewScrollDirectionHorizontal && difference > 0)) {
             currentFrame.origin.x = previousMaxX + self.actualItemSpacing;
             currentFrame.origin.y = CGRectGetMinY(prevLayoutAttributes.frame);
         } else {
-            currentFrame.origin.x = 0;
+            currentFrame.origin.x = self.sectionInset.left;
             currentFrame.origin.y = CGRectGetMaxY(prevLayoutAttributes.frame) + self.minimumLineSpacing;
         }
         currentLayoutAttributes.frame = currentFrame;
