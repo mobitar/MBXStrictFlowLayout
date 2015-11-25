@@ -16,4 +16,6 @@ When applying a section inset to a section, the section is shifted down by that 
 
 @interface MBXHeaderInsetFlowLayout : UICollectionViewFlowLayout
 
+@property (nonatomic) BOOL animateEntrance;
+
 @end

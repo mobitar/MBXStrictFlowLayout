@@ -29,6 +29,9 @@
 - (UICollectionViewLayoutAttributes*)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
     UICollectionViewLayoutAttributes *attributes = [[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath] copy];
+    if(!self.animateEntrance) {
+        return attributes;
+    }
     attributes.transform = CGAffineTransformMakeScale(0.1, 0.1);
     return attributes;
 }
@@ -36,6 +39,9 @@
 - (UICollectionViewLayoutAttributes*)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
     UICollectionViewLayoutAttributes *attributes = [[super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath] copy];
+    if(!self.animateEntrance) {
+        return attributes;
+    }
     attributes.transform = CGAffineTransformIdentity;
     return attributes;
 }
